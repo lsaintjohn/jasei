@@ -1,0 +1,30 @@
+import requests
+
+username = "seu username"
+token = "seu token aqui"
+
+# Obtém a lista de repositórios
+def get_repositories():
+    headers = {
+        "Authorization": f"Token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    response = requests.get(f"https://api.github.com/users/{username}/repos", headers=headers)
+    return response.json()
+
+# Exclui um repositório
+def delete_repository(repo):
+    headers = {
+        "Authorization": f"Token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    response = requests.delete(f"https://api.github.com/repos/{username}/{repo}", headers=headers)
+    if response.status_code == 204:
+        print(f"O repositório {repo} foi excluído com sucesso.")
+    else:
+        print(f"Não foi possível excluir o repositório {repo}. Erro {response.status_code}.")
+
+# Obtém a lista de repositórios e exclui um por um
+repositories = get_repositories()
+for repo in repositories:
+    delete_repository(repo["name"])
