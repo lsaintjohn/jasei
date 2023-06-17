@@ -1,0 +1,39 @@
+import random
+
+# Listas de nomes e sobrenomes
+nomes_masculinos = ["João", "Pedro", "José", "Antônio", "Francisco", "Carlos", "Luiz", "Paulo", "Marcos", "Rafael",
+                    "Daniel", "Lucas", "Gustavo", "André", "Eduardo", "Felipe", "Fernando", "Leonardo", "Miguel",
+                    "Guilherme", "Bruno", "Ricardo", "Rodrigo", "Roberto", "Alexandre", "Vitor", "Diego", "Cristiano",
+                    "Marcelo"]
+nomes_femininos = ["Maria", "Ana", "Joana", "Mariana", "Carla", "Beatriz", "Juliana", "Isabela", "Letícia", "Natália",
+                   "Amanda", "Fernanda", "Camila", "Laura", "Luana", "Renata", "Vanessa", "Patrícia", "Gabriela",
+                   "Jéssica", "Talita", "Viviane", "Larissa", "Bianca", "Raquel", "Priscila", "Débora", "Simone",
+                   "Aline", "Silvia"]
+sobrenomes = ["Silva", "Santos", "Oliveira", "Souza", "Pereira", "Ferreira", "Rodrigues", "Almeida", "Costa", "Gomes",
+              "Martins", "Rocha", "Ribeiro", "Carvalho", "Melo", "Sousa", "Barbosa", "Nascimento", "Cavalcanti",
+              "Teixeira", "Lima", "Araújo", "Monteiro", "Fernandes", "Freitas", "Vieira", "Lopes", "Batista",
+              "Cunha", "Dias"]
+
+# Solicitar gênero ou se deseja nomes mistos
+opcao = input("Deseja nomes masculinos (M), femininos (F) ou mistos (Misto)? ")
+
+# Solicitar quantidade de nomes a serem gerados
+quantidade = int(input("Quantos nomes você deseja gerar? "))
+
+# Gerar nomes
+for _ in range(quantidade):
+    if opcao.lower() == "m":
+        nome = random.choice(nomes_masculinos)
+    elif opcao.lower() == "f":
+        nome = random.choice(nomes_femininos)
+    elif opcao.lower() == "misto":
+        nome = random.choice(nomes_masculinos + nomes_femininos)
+    else:
+        print("Opção inválida.")
+        break
+
+    sobrenome1 = random.choice(sobrenomes)
+    sobrenome2 = random.choice(sobrenomes)
+
+    nome_completo = f"{nome} {sobrenome1} {sobrenome2}"
+    print(nome_completo)
